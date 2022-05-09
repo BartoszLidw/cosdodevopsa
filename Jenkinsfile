@@ -14,7 +14,7 @@ pipeline {
         stage('Build') {
             steps {
                
-                    sh 'echo dependencies'sh 'echo dependencies'
+                    sh 'echo dependencies'
                 
             }
         }
