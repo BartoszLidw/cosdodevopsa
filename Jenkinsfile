@@ -8,7 +8,7 @@ pipeline {
 		docker.build("cos_dep", ". -f Dockerfile_Dependecny")
                     
                     sh 'echo dependencies'
-                
+		}
             }
         }
         
