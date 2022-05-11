@@ -1,3 +1,3 @@
 FROM cos_dep:latest
-WORKDIR app
+WORKDIR /app
 RUN mvn compiler:compile 
