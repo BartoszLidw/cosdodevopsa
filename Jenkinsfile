@@ -14,8 +14,10 @@ pipeline {
         
         stage('Build') {
             steps {
+		    script{
                docker.build("cos_bui", ". -f Dockerfile_build")
                     sh 'echo builded'
+		    }
                 
             }
         }
