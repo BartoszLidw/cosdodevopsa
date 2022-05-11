@@ -4,4 +4,4 @@ RUN apk add maven
 RUN apk add openjdk11
 COPY app app
 WORKDIR app
-RUN mvn install
+RUN mvn dependency:go-offline
