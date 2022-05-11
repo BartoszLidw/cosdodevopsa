@@ -1,2 +1,2 @@
-FROM cos_main:latest
+FROM cos_build:latest
 RUN mvn test

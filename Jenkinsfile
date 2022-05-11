@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage("Dependencies") {
             steps {
-                
+                script{
+		docker.build("cos_dep", ". -f Dockerfile_Dependecny")
                     
                     sh 'echo dependencies'
                 
@@ -13,15 +14,18 @@ pipeline {
         
         stage('Build') {
             steps {
-               
-                    sh 'echo dependencies'
+               docker.build("cos_bui", ". -f Dockerfile_build")
+                    sh 'echo builded'
                 
             }
         }
         stage('Test') {
             steps {
                
-                    sh 'echo dependencies'
+                    script {
+                    docker.build("cos_test", ". -f Dockerfile_Test")
+                    sh 'echo tested'
+                }
                 
             }
         }
