@@ -1,3 +1,4 @@
 FROM cos_dep:latest
+RUN ls
 WORKDIR /app
 RUN mvn compiler:compile 
