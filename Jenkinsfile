@@ -31,7 +31,7 @@ pipeline {
             steps {
                
                     script {
-			    sh 'ls' 
+			    sh 'ls app' 
                     docker.build("cos_test", ". -f Dockerfile_Test")
                     sh 'echo tested'
                 }
