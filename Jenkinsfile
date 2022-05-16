@@ -32,6 +32,7 @@ pipeline {
                
                     script {
 			    sh 'ls app' 
+			    sh 'ls'
                     docker.build("cos_test", ". -f Dockerfile_Test")
                     sh 'echo tested'
                 }
