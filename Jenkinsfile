@@ -53,6 +53,21 @@ pipeline {
                 
             }
         }
+	    stage('Publish'){
+		    steps {
+               
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubPassword', usernameVariable: 'dockerhubUser')]) {
+                    sh "docker login -u ${dockerhubUser} -p ${dockerhubPassword}"
+                    sh "docker push cosdodevopsa:${env.BUILD_ID}"
+	    }
     }
-   
+    post {
+        success {
+            echo 'Succeeded, now I`m saving artifact.'
+            archiveArtifacts artifacts: 'shared_volume/app.jar', fingerprint: true
+        }
+        failure {
+            echo 'Failed, I`m not saving any artifacts.'
+        }
+    }
 }
