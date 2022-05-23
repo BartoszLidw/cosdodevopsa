@@ -47,6 +47,7 @@ pipeline {
 		     
                     sh 'docker rm -f cos_depy'
 		    sh 'ls shared_volume' 
+		
 		    sh 'ls'  
                     def deploy_Image = docker.build("cos_depy", ". -f Dockerfile_Deploy")
                     deploy_Image.run("--name cos_depy")
