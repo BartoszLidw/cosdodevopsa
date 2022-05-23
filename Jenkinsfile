@@ -16,9 +16,10 @@ pipeline {
             steps {
 		    script
 		    {
-		    sh 'ls'    
+		    sh 'ls'   
+		    sh 'rm -rf shared_volume'    
 		    def image_Build = docker.build("cos_bui", ". -f Dockerfile_Build")
-                    sh 'rm -rf shared_volume'
+            
                     sh 'mkdir shared_volume'
 		    sh 'ls'
                     image_Build.run("-v \$(pwd)/shared_volume:/output")
