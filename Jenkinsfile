@@ -31,6 +31,7 @@ pipeline {
             steps {
                
                     script {
+			    sh 'echo $PATH'
 			    sh 'ls app' 
 			    sh 'ls'
                     def image_Build = docker.build("cos_test", ". -f Dockerfile_Test")
