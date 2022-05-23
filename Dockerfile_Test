@@ -1,3 +1,3 @@
 FROM cos_bui:latest
-WORKDIR \app
+
 RUN mvn test
