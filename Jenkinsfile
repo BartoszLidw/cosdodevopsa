@@ -22,7 +22,7 @@ pipeline {
 		    def image_Build = docker.build("cos_bui", ". -f Dockerfile_Build")
             
                     sh 'mkdir shared_volume'
-		    sh 'ls app/target'
+		    sh 'ls app/'
                     image_Build.run("-v \$(pwd)/shared_volume:/output")
 		    sh 'ls shared_volume'
 		    }
