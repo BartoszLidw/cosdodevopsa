@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+	}
     stages {
         stage("Dependencies") {
             steps {
@@ -65,9 +67,8 @@ pipeline {
 		stage('Publish'){
 		    steps {
 
-		withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubPassword', usernameVariable: 'dockerhubUser')]) {
-		    sh "docker login -u ${dockerhubUser} -p ${dockerhubPassword}"
-		    sh "docker push cosdodevopsa:${env.BUILD_ID}"
+		    sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+		    sh 'docker push cosdodevopsa:${env.BUILD_ID}'
 			}
     		}
 	}
