@@ -23,9 +23,9 @@ pipeline {
             
                     sh 'mkdir shared_volume'
 		    sh 'ls app -a'
-                    image_Build.run("-v \$(pwd)/shared_volume:/output")
+                    sh "docker run -v \$(pwd)/shared_volume:/output cos_bui"
 			sh 'ls app -a'
-		    sh 'ls shared_volume'
+		    sh 'ls shared_volume -a'
 		    }
                 
             }
@@ -51,7 +51,7 @@ pipeline {
                     sh 'docker rm -f cos_depy'
 		    sh 'ls shared_volume' 
 		
-		    sh 'ls'  
+		    sh 'ls app'  
                     def deploy_Image = docker.build("cos_depy", ". -f Dockerfile_Deploy")
                     deploy_Image.run("--name cos_depy")
                     sh 'sleep 10'
