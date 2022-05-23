@@ -2,6 +2,6 @@ FROM openjdk:16-jdk-alpine
 
 RUN apk add --no-cache --upgrade bash
 
-COPY shared_volume/app.jar /app.jar
+COPY shared_volume/cosdodevopsa-1.0-SNAPSHOT.jar /cosdodevopsa-1.0-SNAPSHOT.jar
 
 ENTRYPOINT [ "java", "-jar", "cosdodevopsa-1.0-SNAPSHOT.jar" ]
