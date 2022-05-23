@@ -44,11 +44,14 @@ pipeline {
             steps {
                
                   script {
-                    sh 'docker rm -f cos_dep'
-                    def deploy_Image = docker.build("cos_dep", ". -f Dockerfile_Deploy")
-                    deploy_Image.run("--name cos_dep")
+		     
+                    sh 'docker rm -f cos_depy'
+		    sh 'ls shared_volume' 
+		    sh 'ls'  
+                    def deploy_Image = docker.build("cos_depy", ". -f Dockerfile_Deploy")
+                    deploy_Image.run("--name cos_depy")
                     sh 'sleep 10'
-                    sh 'docker rm -f cos_dep'
+                    sh 'docker rm -f cos_depy'
                 }
                 
                 
