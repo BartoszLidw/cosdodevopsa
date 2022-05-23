@@ -64,12 +64,11 @@ pipeline {
         }
 		stage('Publish'){
 		    steps {
-  			script {
-		docker.withRegistry( 'cos_depy', dockerhub ) {
-			deploy_Image.push()
-}
-			}
-    		}
+  			withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubPassword', usernameVariable: 'dockerhubUser')]) {
+                    sh "docker login -u ${dockerhubUser} -p ${dockerhubPassword}"
+                    sh "docker push cos_depy:${BUILD_NUMBER}"
+    			}
+		}
 	}
     }	    
     post {
