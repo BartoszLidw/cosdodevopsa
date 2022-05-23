@@ -24,7 +24,7 @@ pipeline {
                     sh 'mkdir shared_volume'
 	            sh 'ls'
 		    sh 'ls app -a'
-                       imageBuild.run("-v \$(pwd)/shared_volume:/output")
+                       image_Build.run("-v \$(pwd)/shared_volume:/output")
 			sh 'ls app -a'
 		    sh 'ls shared_volume -a'
 		    }
