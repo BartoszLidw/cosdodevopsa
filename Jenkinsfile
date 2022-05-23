@@ -59,9 +59,10 @@ pipeline {
 		withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubPassword', usernameVariable: 'dockerhubUser')]) {
 		    sh "docker login -u ${dockerhubUser} -p ${dockerhubPassword}"
 		    sh "docker push cosdodevopsa:${env.BUILD_ID}"
-		}
-    	}
-}
+			}
+    		}
+	}
+    }	    
     post {
         success {
             echo 'Succeeded, now I`m saving artifact.'
