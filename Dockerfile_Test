@@ -1,3 +1,3 @@
 FROM cos_bui:latest
 
-RUN cd  && mvn test -e -X
+RUN cd .. && mvn test -e -X
