@@ -18,7 +18,7 @@ pipeline {
 		    {
 		    
 			    
-		       
+		     sh 'ls'
 		    def image_Build = docker.build("cos_bui", ". -f Dockerfile_Build")
             	    sh 'rm -rf shared_volume' 
                     sh 'mkdir shared_volume'
